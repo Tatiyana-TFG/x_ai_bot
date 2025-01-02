@@ -1,16 +1,23 @@
-# main.py
-
 from services.twitter_service import create_driver, login_to_twitter, tweet_with_image
 from services.tweet_manager import get_unposted_tweet, mark_as_posted, reset_all_tweets
 from config.database import connect_to_db
 import psycopg2
 
 def main():
-    # Connect to the database
-    connection = connect_to_db()
-    driver = create_driver()
+    connection = None
+    driver = None
 
     try:
+        # Connect to the database
+        connection = psycopg2.connect(
+            dbname="database_name",
+            user="username",
+            password="password",
+            host="host",
+            port="port"
+        )
+        driver = create_driver()
+
         # Log in to Twitter
         login_to_twitter(driver)
 
@@ -24,9 +31,16 @@ def main():
                 print("No unposted tweets found. Resetting all tweets to unposted.")
                 reset_all_tweets(connection)
                 continue  # Restart the loop to start posting tweets again
+
+    except psycopg2.Error as e:
+        print(f"Error connecting to the database: {e}")
+
     finally:
-        connection.close()
-        driver.quit()
+        # Ensure cleanup only if resources were initialized
+        if connection:
+            connection.close()
+        if driver:
+            driver.quit()
 
 if __name__ == "__main__":
     main()
