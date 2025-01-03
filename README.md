@@ -1,92 +1,70 @@
+# Getting Started with Create React App
 
-# Xbot - Twitter Bot
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Xbot is a Python-based Twitter automation application that uses Selenium to log in to Twitter and post tweets with optional images. The application reads tweets from a MySQL database and marks them as posted after tweeting. When all tweets have been posted, the application resets them for reposting.
+## Available Scripts
 
-## Features
-- Automatically logs in to Twitter using Selenium.
-  - Posts tweets with optional images.
-  - Reads tweet content from a MySQL database.
-  - Resets tweet statuses after all tweets are posted.
+In the project directory, you can run:
 
-## Project Structure
-```
-Xbot/
-│
-├── .env                         # Environment variables for sensitive data
-├── chromedriver/                # Directory for ChromeDriver
-│   └── chromedriver.exe         # ChromeDriver executable
-├── config/
-│   └── database.py              # Database configuration and connection
-├── services/
-│   ├── twitter_service.py       # Service for Twitter-related functions
-│   └── tweet_manager.py         # Logic for managing tweets
-├── models/
-│   └── tweet.sql                # SQL file to create the tweets table
-├── main.py                      # Main entry point to run the application
-├── requirements.txt             # Python dependencies
-└── README.md                    # README file
-```
+### `npm start`
 
-## Prerequisites
-- Python 3.x installed
-  - Google Chrome installed
-  - ChromeDriver (match the version of your Chrome installation)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Setup Instructions
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/ShaharFullStack/Xbot.git
-   cd Xbot
-   ```
+### `npm test`
 
-   2. **Install dependencies**:
-      ```bash
-      pip install -r requirements.txt
-      ```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-   3. **Configure the .env file**:
-      Create a `.env` file in the project root directory with the following content:
-      ```
-      # Database configuration
-      DB_HOST=localhost
-      DB_USER=root
-      DB_PASSWORD=your_database_password # Replace with your actual password!
-      DB_NAME=twitter_bot
+### `npm run build`
 
-      # Twitter login credentials
-      TWITTER_USERNAME=your_twitter_username # Replace with your actual username!
-      TWITTER_PASSWORD=your_twitter_password # Replace with your actual password!
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-      # Path to ChromeDriver
-      CHROMEDRIVER_PATH=chromedriver/chromedriver.exe # Ready to use, no need to change!
-      ```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-      **Note**: Replace `your_database_password`, `your_twitter_username`, and `your_twitter_password` with your actual database and Twitter credentials.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-   4. **Create the database and table**:
-      - Import the `models/tweet.sql` file to create the `tweets` table in your MySQL database:
-        ```bash
-        mysql -u root -p twitter_bot < models/tweet.sql
-        ```
+### `npm run eject`
 
-   5. **Add tweet data**:
-      - Manually insert some tweets into the `tweets` table for testing:
-        ```sql
-        INSERT INTO tweets (content, image_path, posted) VALUES 
-        ('Hello, world!', 'C:\path_to_image\image.png', FALSE);
-        ```
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-   6. **Run the application**:
-      ```bash
-      python main.py
-      ```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Troubleshooting
-- Ensure that the ChromeDriver version matches your installed Chrome version.
-  - Verify the `.env` file configuration for correct credentials.
-  - Make sure the MySQL database is running.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## License
-This project is licensed under the MIT License.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
